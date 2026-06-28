@@ -4,7 +4,7 @@ import DistrictOfficer from './components/DistrictOfficer';
 import CitizenPortal from './components/CitizenPortal';
 import AIEngineSimulator from './components/AIEngineSimulator';
 import Login from './components/Login';
-import { Cpu, LogOut, User } from 'lucide-react';
+import { Cpu, LogOut, User, RotateCcw } from 'lucide-react';
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -36,7 +36,8 @@ export default function App() {
         department: 'Public Works',
         coordinates: { x: 380, y: 110 },
         createdAt: '2026-06-26T08:00:00Z',
-        reportedBy: 'system'
+        reportedBy: 'system',
+        imageUrl: 'https://images.unsplash.com/photo-1515162305285-0293e4767cc2?w=150'
       },
       {
         id: 'WO-1025',
@@ -50,7 +51,8 @@ export default function App() {
         department: 'Water & Sanitation',
         coordinates: { x: 380, y: 220 },
         createdAt: '2026-06-26T09:15:00Z',
-        reportedBy: 'system'
+        reportedBy: 'system',
+        imageUrl: 'https://images.unsplash.com/photo-1542013936693-8848e574047a?w=150'
       },
       {
         id: 'WO-1026',
@@ -64,7 +66,8 @@ export default function App() {
         department: 'Grid & Energy',
         coordinates: { x: 550, y: 220 },
         createdAt: '2026-06-26T10:30:00Z',
-        reportedBy: 'system'
+        reportedBy: 'system',
+        imageUrl: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=150'
       },
       {
         id: 'WO-1027',
@@ -78,7 +81,8 @@ export default function App() {
         department: 'Water & Sanitation',
         coordinates: { x: 300, y: 240 },
         createdAt: '2026-06-26T11:00:00Z',
-        reportedBy: 'system'
+        reportedBy: 'system',
+        imageUrl: 'https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=150'
       },
       {
         id: 'WO-1028',
@@ -92,7 +96,8 @@ export default function App() {
         department: 'Health Services',
         coordinates: { x: 620, y: 300 },
         createdAt: '2026-06-26T12:00:00Z',
-        reportedBy: 'system'
+        reportedBy: 'system',
+        imageUrl: null
       }
     ];
   });
@@ -124,6 +129,15 @@ export default function App() {
     setCurrentUser(null);
   };
 
+  // Clear Cache and Reset Data
+  const handleResetData = () => {
+    if (window.confirm('Are you sure you want to reset all data and cache to defaults?')) {
+      localStorage.removeItem('janconnect_issues');
+      localStorage.removeItem('janconnect_users');
+      window.location.reload();
+    }
+  };
+
   const stats = getStats();
 
   // If not logged in, render Login card page
@@ -142,7 +156,7 @@ export default function App() {
         <div className="header-content">
           <div className="brand-section">
             <Cpu className="logo-icon" size={24} />
-            <span className="brand-text">JanConnect</span>
+            <span className="brand-text" style={{ cursor: 'pointer' }} onClick={handleResetData} title="Reset Cache & Data">JanConnect</span>
           </div>
 
           {/* Quick Real-time State Strip */}
@@ -165,6 +179,16 @@ export default function App() {
 
           {/* Auth info & logout control */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {/* Developer Reset Data trigger */}
+            <button 
+              onClick={handleResetData}
+              className="btn btn-secondary" 
+              style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', padding: '0.4rem 0.8rem', fontSize: '0.8rem', cursor: 'pointer', border: '1px solid rgba(255,183,0,0.2)' }}
+              title="Reset all issues to default"
+            >
+              <RotateCcw size={12} style={{ color: 'var(--warning)' }} /> Reset Database
+            </button>
+
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', padding: '0.35rem 0.75rem', borderRadius: '8px' }}>
               <User size={14} style={{ color: 'var(--primary)' }} />
               <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
