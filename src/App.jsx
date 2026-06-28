@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MPEngagement from './components/MPEngagement';
 import DistrictOfficer from './components/DistrictOfficer';
 import CitizenPortal from './components/CitizenPortal';
@@ -10,81 +10,101 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [activeRole, setActiveRole] = useState('mp'); // 'mp' | 'officer' | 'citizen' | 'simulator'
 
-  // Central User Account Database
-  const [users, setUsers] = useState([
-    { name: 'Member of Parliament (MP)', email: 'mp@janconnect.gov.in', pass: 'mp123', role: 'mp' },
-    { name: 'District Officer', email: 'officer@janconnect.gov.in', pass: 'officer123', role: 'officer' },
-    { name: 'Citizen Portal', email: 'citizen@gmail.com', pass: 'citizen123', role: 'citizen' }
-  ]);
+  // Central User Account Database with localStorage persistence
+  const [users, setUsers] = useState(() => {
+    const saved = localStorage.getItem('janconnect_users');
+    return saved ? JSON.parse(saved) : [
+      { name: 'Member of Parliament (MP)', email: 'mp@janconnect.gov.in', pass: 'mp123', role: 'mp' },
+      { name: 'District Officer', email: 'officer@janconnect.gov.in', pass: 'officer123', role: 'officer' },
+      { name: 'Citizen Portal', email: 'citizen@gmail.com', pass: 'citizen123', role: 'citizen' }
+    ];
+  });
 
-  // Central State for all issues in the Digital Twin
-  const [issues, setIssues] = useState([
-    {
-      id: 'WO-1024',
-      title: 'Sector 4 School Road Pothole',
-      description: 'Severe pothole cluster outside the main school gate causing traffic delays and vehicle damage.',
-      category: 'Road',
-      priorityScore: 68,
-      status: 'Pending',
-      affectedPopulation: 1200,
-      estCost: 3500,
-      department: 'Public Works',
-      coordinates: { x: 380, y: 110 },
-      createdAt: '2026-06-26T08:00:00Z'
-    },
-    {
-      id: 'WO-1025',
-      title: 'Broken Main Water Conduit',
-      description: 'Massive water leakage from the primary supply grid pipeline near Sector 5 market, flooding adjacent roads.',
-      category: 'Water',
-      priorityScore: 88,
-      status: 'In Progress',
-      affectedPopulation: 2500,
-      estCost: 4800,
-      department: 'Water & Sanitation',
-      coordinates: { x: 380, y: 220 },
-      createdAt: '2026-06-26T09:15:00Z'
-    },
-    {
-      id: 'WO-1026',
-      title: 'Fluctuating Substation Transformer',
-      description: 'Sparking transmission cables and humming noise coming from Sector 2 substation. Power outages reported.',
-      category: 'Electricity',
-      priorityScore: 82,
-      status: 'Pending',
-      affectedPopulation: 1800,
-      estCost: 6500,
-      department: 'Grid & Energy',
-      coordinates: { x: 550, y: 220 },
-      createdAt: '2026-06-26T10:30:00Z'
-    },
-    {
-      id: 'WO-1027',
-      title: 'Overflowing Sewage Line',
-      description: 'Clogged sewage pipeline backing up into residential streets, causing heavy sanitation and odor concerns.',
-      category: 'Sanitation',
-      priorityScore: 54,
-      status: 'In Progress',
-      affectedPopulation: 600,
-      estCost: 2000,
-      department: 'Water & Sanitation',
-      coordinates: { x: 300, y: 240 },
-      createdAt: '2026-06-26T11:00:00Z'
-    },
-    {
-      id: 'WO-1028',
-      title: 'Hospital ICU Air Purifier Failure',
-      description: 'The clean-air regulation system in District Hospital Ward B is malfunctioning. Needs immediate diagnostics.',
-      category: 'Health',
-      priorityScore: 94,
-      status: 'Pending',
-      affectedPopulation: 140,
-      estCost: 8000,
-      department: 'Health Services',
-      coordinates: { x: 620, y: 300 },
-      createdAt: '2026-06-26T12:00:00Z'
-    }
-  ]);
+  // Central State for all issues in the Digital Twin with localStorage persistence
+  const [issues, setIssues] = useState(() => {
+    const saved = localStorage.getItem('janconnect_issues');
+    return saved ? JSON.parse(saved) : [
+      {
+        id: 'WO-1024',
+        title: 'Sector 4 School Road Pothole',
+        description: 'Severe pothole cluster outside the main school gate causing traffic delays and vehicle damage.',
+        category: 'Road',
+        priorityScore: 68,
+        status: 'Pending',
+        affectedPopulation: 1200,
+        estCost: 3500,
+        department: 'Public Works',
+        coordinates: { x: 380, y: 110 },
+        createdAt: '2026-06-26T08:00:00Z',
+        reportedBy: 'system'
+      },
+      {
+        id: 'WO-1025',
+        title: 'Broken Main Water Conduit',
+        description: 'Massive water leakage from the primary supply grid pipeline near Sector 5 market, flooding adjacent roads.',
+        category: 'Water',
+        priorityScore: 88,
+        status: 'In Progress',
+        affectedPopulation: 2500,
+        estCost: 4800,
+        department: 'Water & Sanitation',
+        coordinates: { x: 380, y: 220 },
+        createdAt: '2026-06-26T09:15:00Z',
+        reportedBy: 'system'
+      },
+      {
+        id: 'WO-1026',
+        title: 'Fluctuating Substation Transformer',
+        description: 'Sparking transmission cables and humming noise coming from Sector 2 substation. Power outages reported.',
+        category: 'Electricity',
+        priorityScore: 82,
+        status: 'Pending',
+        affectedPopulation: 1800,
+        estCost: 6500,
+        department: 'Grid & Energy',
+        coordinates: { x: 550, y: 220 },
+        createdAt: '2026-06-26T10:30:00Z',
+        reportedBy: 'system'
+      },
+      {
+        id: 'WO-1027',
+        title: 'Overflowing Sewage Line',
+        description: 'Clogged sewage pipeline backing up into residential streets, causing heavy sanitation and odor concerns.',
+        category: 'Sanitation',
+        priorityScore: 54,
+        status: 'In Progress',
+        affectedPopulation: 600,
+        estCost: 2000,
+        department: 'Water & Sanitation',
+        coordinates: { x: 300, y: 240 },
+        createdAt: '2026-06-26T11:00:00Z',
+        reportedBy: 'system'
+      },
+      {
+        id: 'WO-1028',
+        title: 'Hospital ICU Air Purifier Failure',
+        description: 'The clean-air regulation system in District Hospital Ward B is malfunctioning. Needs immediate diagnostics.',
+        category: 'Health',
+        priorityScore: 94,
+        status: 'Pending',
+        affectedPopulation: 140,
+        estCost: 8000,
+        department: 'Health Services',
+        coordinates: { x: 620, y: 300 },
+        createdAt: '2026-06-26T12:00:00Z',
+        reportedBy: 'system'
+      }
+    ];
+  });
+
+  // Sync to localStorage
+  useEffect(() => {
+    localStorage.setItem('janconnect_users', JSON.stringify(users));
+  }, [users]);
+
+  useEffect(() => {
+    localStorage.setItem('janconnect_issues', JSON.stringify(issues));
+  }, [issues]);
 
   // Compute live statistics based on issues list
   const getStats = () => {
@@ -172,7 +192,7 @@ export default function App() {
           <DistrictOfficer issues={issues} setIssues={setIssues} stats={stats} />
         )}
         {activeRole === 'citizen' && (
-          <CitizenPortal issues={issues} setIssues={setIssues} />
+          <CitizenPortal issues={issues} setIssues={setIssues} currentUser={currentUser} />
         )}
         {activeRole === 'simulator' && (
           <AIEngineSimulator issues={issues} setIssues={setIssues} />

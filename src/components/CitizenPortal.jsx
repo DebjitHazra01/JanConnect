@@ -4,7 +4,7 @@ import {
   Clock, Send, Sparkles, MapPin, Image 
 } from 'lucide-react';
 
-export default function CitizenPortal({ issues, setIssues }) {
+export default function CitizenPortal({ issues, setIssues, currentUser }) {
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('Road');
@@ -21,30 +21,11 @@ export default function CitizenPortal({ issues, setIssues }) {
     submitting: false
   });
 
-  const [citizenIssues, setCitizenIssues] = useState([
-    {
-      id: 'WO-9831',
-      title: 'Water Logged Sub-Way',
-      description: 'Severe water clogging near subway entry making it impossible to walk.',
-      category: 'Water',
-      status: 'In Progress',
-      priorityScore: 78,
-      createdAt: '2026-06-25T10:00:00Z',
-      department: 'Water & Sanitation',
-      imageUrl: 'https://images.unsplash.com/photo-1542013936693-8848e574047a?w=150'
-    },
-    {
-      id: 'WO-9540',
-      title: 'Damaged Street Lamp',
-      description: 'The lamp post in park lane has been broken for three days.',
-      category: 'Electricity',
-      status: 'Resolved',
-      priorityScore: 42,
-      createdAt: '2026-06-20T08:30:00Z',
-      department: 'Grid & Energy',
-      imageUrl: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=150'
-    }
-  ]);
+  // Derive issues from global state to maintain single source of truth
+  const citizenIssues = issues.filter(issue => 
+    issue.reportedBy === currentUser?.email || 
+    issue.reportedBy === 'system'
+  );
 
   // Pre-configured mock images corresponding to issues
   const mockImages = [
@@ -158,12 +139,12 @@ export default function CitizenPortal({ issues, setIssues }) {
         department: aiPred.department,
         coordinates: { x, y },
         createdAt: new Date().toISOString(),
-        imageUrl: imgUrl
+        imageUrl: imgUrl,
+        reportedBy: currentUser?.email || 'citizen@gmail.com'
       };
 
-      // Update both global state and local list
+      // Update central global state database
       setIssues(prev => [newIssue, ...prev]);
-      setCitizenIssues(prev => [newIssue, ...prev]);
 
       // Reset form
       setTitle('');
