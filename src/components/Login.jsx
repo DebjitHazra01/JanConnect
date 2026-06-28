@@ -105,7 +105,7 @@ export default function Login({ onLoginSuccess, users, setUsers }) {
         {/* Card Header */}
         <div className="login-header">
           <Cpu className="login-logo" size={42} />
-          <h1>CivicTwin AI</h1>
+          <h1>JanConnect</h1>
           <p style={{ fontSize: '0.85rem' }}>
             {isRegistering ? 'Create Your Dynamic Credentials Profile' : 'Constituency Digital Twin Authentication'}
           </p>
@@ -131,7 +131,7 @@ export default function Login({ onLoginSuccess, users, setUsers }) {
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} 
                 className="form-input" 
-                placeholder="mp@civictwin.gov.in"
+                placeholder="mp@janconnect.gov.in"
                 required 
                 disabled={loading}
               />

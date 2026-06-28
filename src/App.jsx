@@ -12,8 +12,8 @@ export default function App() {
 
   // Central User Account Database
   const [users, setUsers] = useState([
-    { name: 'Member of Parliament (MP)', email: 'mp@civictwin.gov.in', pass: 'mp123', role: 'mp' },
-    { name: 'District Officer', email: 'officer@civictwin.gov.in', pass: 'officer123', role: 'officer' },
+    { name: 'Member of Parliament (MP)', email: 'mp@janconnect.gov.in', pass: 'mp123', role: 'mp' },
+    { name: 'District Officer', email: 'officer@janconnect.gov.in', pass: 'officer123', role: 'officer' },
     { name: 'Citizen Portal', email: 'citizen@gmail.com', pass: 'citizen123', role: 'citizen' }
   ]);
 
@@ -122,7 +122,7 @@ export default function App() {
         <div className="header-content">
           <div className="brand-section">
             <Cpu className="logo-icon" size={24} />
-            <span className="brand-text">CivicTwin AI</span>
+            <span className="brand-text">JanConnect</span>
           </div>
 
           {/* Quick Real-time State Strip */}
