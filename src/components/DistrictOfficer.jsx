@@ -179,9 +179,20 @@ export default function DistrictOfficer({ issues, setIssues, stats }) {
                       <tr key={issue.id} style={{ opacity: isResolved ? 0.6 : 1 }}>
                         <td style={{ fontWeight: 600, fontSize: '0.8rem', whiteSpace: 'nowrap' }}>{issue.id}</td>
                         <td>
-                          <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{issue.title}</div>
-                          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
-                            {issue.description}
+                          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                            {issue.imageUrl && (
+                              <img 
+                                src={issue.imageUrl} 
+                                alt={issue.title} 
+                                style={{ width: '48px', height: '48px', objectFit: 'cover', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.08)', flexShrink: 0, marginTop: '0.25rem' }} 
+                              />
+                            )}
+                            <div>
+                              <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{issue.title}</div>
+                              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>
+                                {issue.description}
+                              </div>
+                            </div>
                           </div>
                         </td>
                         <td>
