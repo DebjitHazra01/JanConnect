@@ -165,7 +165,7 @@ export default function CitizenPortal({ issues, setIssues, currentUser }) {
           <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
             Citizen Report Portal
           </h1>
-          <p style={{ marginTop: '0.25rem' }}>Empowering citizens to co-manage West Bengaluru constituency</p>
+          <p style={{ marginTop: '0.25rem' }}>Empowering citizens to co-manage West Bengal constituency</p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-color)', borderRadius: '12px', padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
           <Smartphone size={16} style={{ color: 'var(--success)' }} />

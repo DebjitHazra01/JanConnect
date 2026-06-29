@@ -102,7 +102,7 @@ export default function DistrictOfficer({ issues, setIssues, stats }) {
         <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
           District Officer Dashboard
         </h1>
-        <p style={{ marginTop: '0.25rem' }}>District: D-4 (Bengaluru West) • Operational Dispatch & Field Work Management</p>
+        <p style={{ marginTop: '0.25rem' }}>District: D-4 (West Bengal) • Operational Dispatch & Field Work Management</p>
       </div>
 
       {/* Tabs */}

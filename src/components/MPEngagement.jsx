@@ -54,7 +54,7 @@ export default function MPEngagement({ issues, setIssues, stats }) {
           <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
             Constituency Digital Twin <span style={{ fontSize: '0.8rem', padding: '0.2rem 0.6rem', borderRadius: '12px', background: 'rgba(0, 240, 255, 0.15)', color: 'var(--primary)', border: '1px solid rgba(0, 240, 255, 0.3)', verticalAlign: 'middle' }}>LIVE FEED</span>
           </h1>
-          <p style={{ marginTop: '0.25rem' }}>Constituency: West Bengaluru (District-4) • Real-time AI Governance Console</p>
+          <p style={{ marginTop: '0.25rem' }}>Constituency: West Bengal (District-4) • Real-time AI Governance Console</p>
         </div>
         <div className="badge badge-indigo" style={{ padding: '0.5rem 1rem' }}>
           <Sparkles size={14} style={{ color: '#c084fc' }} />
