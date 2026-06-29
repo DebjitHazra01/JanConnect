@@ -134,8 +134,8 @@ export default function MPEngagement({ issues, setIssues, stats }) {
               {/* Definitions for map gradients */}
               <defs>
                 <radialGradient id="mapGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#1e293b" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#0b0f19" stopOpacity="1" />
+                  <stop offset="0%" stopColor="#f8fafc" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#e2e8f0" stopOpacity="1" />
                 </radialGradient>
               </defs>
               
@@ -145,23 +145,23 @@ export default function MPEngagement({ issues, setIssues, stats }) {
               {/* Constituency Border (Shaded Polygon) */}
               <polygon 
                 points="100,80 350,50 650,80 750,220 700,420 400,450 150,380 80,240" 
-                fill="#131828" 
-                stroke="rgba(255,255,255,0.05)" 
+                fill="#f1f5f9" 
+                stroke="rgba(0,0,0,0.06)" 
                 strokeWidth="1.5"
               />
 
               {/* Environment / Parks Layer */}
-              <g className={`map-layer ${selectedLayers.environment ? 'active' : ''}`} fill="rgba(0, 255, 135, 0.04)" stroke="rgba(0, 255, 135, 0.2)" strokeWidth="1">
+              <g className={`map-layer ${selectedLayers.environment ? 'active' : ''}`} fill="rgba(16, 185, 129, 0.05)" stroke="rgba(16, 185, 129, 0.3)" strokeWidth="1">
                 {/* Forest Reserve North East */}
                 <path d="M 500,70 Q 580,50 640,90 T 700,180 Q 650,220 550,180 Z" />
                 {/* Lake/Reservoir Center */}
-                <path d="M 380,220 Q 420,200 450,240 T 420,280 Q 370,260 380,220 Z" fill="rgba(0, 191, 255, 0.08)" stroke="rgba(0, 191, 255, 0.3)" />
+                <path d="M 380,220 Q 420,200 450,240 T 420,280 Q 370,260 380,220 Z" fill="rgba(14, 165, 233, 0.08)" stroke="rgba(14, 165, 233, 0.3)" />
                 {/* Park South West */}
                 <path d="M 180,300 Q 230,290 250,330 T 200,370 Q 150,350 180,300 Z" />
               </g>
 
               {/* Water Pipeline Layer */}
-              <g className={`map-layer ${selectedLayers.water ? 'active' : ''}`} fill="none" stroke="#00bfff" strokeWidth="2" opacity="0.6">
+              <g className={`map-layer ${selectedLayers.water ? 'active' : ''}`} fill="none" stroke="#0ea5e9" strokeWidth="2" opacity="0.6">
                 {/* Main Water Conduit */}
                 <path d="M 100,240 Q 300,240 380,220 T 700,220" className="map-layer-accent" />
                 {/* Branch Pipelines */}
@@ -171,7 +171,7 @@ export default function MPEngagement({ issues, setIssues, stats }) {
               </g>
 
               {/* Infrastructure / Roads Layer */}
-              <g className={`map-layer ${selectedLayers.infrastructure ? 'active' : ''}`} fill="none" stroke="rgba(241, 243, 249, 0.3)" strokeWidth="3" strokeLinecap="round">
+              <g className={`map-layer ${selectedLayers.infrastructure ? 'active' : ''}`} fill="none" stroke="rgba(15, 23, 42, 0.12)" strokeWidth="3" strokeLinecap="round">
                 {/* Express Highway (Main Road Network) */}
                 <path d="M 80,240 Q 200,100 350,50 T 650,80" />
                 <path d="M 150,380 Q 400,300 700,420" />

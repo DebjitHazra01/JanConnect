@@ -2,47 +2,47 @@
 
 :root {
   /* Colors */
-  --bg-darker: #0b0c10;
-  --bg-dark: #12141c;
-  --bg-card: rgba(22, 26, 41, 0.7);
-  --bg-card-hover: rgba(32, 38, 61, 0.85);
+  --bg-darker: #f8fafc;
+  --bg-dark: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-card-hover: rgba(255, 255, 255, 0.9);
   
-  --primary: #00f0ff;
-  --primary-rgb: 0, 240, 255;
-  --primary-glow: rgba(0, 240, 255, 0.15);
+  --primary: #2563eb;
+  --primary-rgb: 37, 99, 235;
+  --primary-glow: rgba(37, 99, 235, 0.08);
   
-  --success: #00ff87;
-  --success-rgb: 0, 255, 135;
-  --success-glow: rgba(0, 255, 135, 0.15);
+  --success: #10b981;
+  --success-rgb: 16, 185, 129;
+  --success-glow: rgba(16, 185, 129, 0.08);
   
-  --warning: #ffb700;
-  --warning-rgb: 255, 183, 0;
-  --warning-glow: rgba(255, 183, 0, 0.15);
+  --warning: #d97706;
+  --warning-rgb: 217, 119, 6;
+  --warning-glow: rgba(217, 119, 6, 0.08);
   
-  --danger: #ff0055;
-  --danger-rgb: 255, 0, 85;
-  --danger-glow: rgba(255, 0, 85, 0.15);
+  --danger: #dc2626;
+  --danger-rgb: 220, 38, 38;
+  --danger-glow: rgba(220, 38, 38, 0.08);
   
-  --info: #8a2be2;
-  --info-rgb: 138, 43, 226;
-  --info-glow: rgba(138, 43, 226, 0.15);
+  --info: #6366f1;
+  --info-rgb: 99, 102, 241;
+  --info-glow: rgba(99, 102, 241, 0.08);
   
-  --text-primary: #f1f3f9;
-  --text-secondary: #8f9cae;
-  --text-muted: #5e697e;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
   
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 240, 255, 0.2);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-glow: rgba(37, 99, 235, 0.15);
   
   /* Fonts */
   --font-sans: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   
   /* Effects */
-  --glass-bg: rgba(15, 18, 30, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.07);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
-  --card-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.4);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(0, 0, 0, 0.07);
+  --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
+  --card-shadow: 0 4px 20px 0 rgba(15, 23, 42, 0.04);
   
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -57,8 +57,8 @@
 body {
   background-color: var(--bg-darker);
   background-image: 
-    radial-gradient(at 10% 20%, rgba(138, 43, 226, 0.05) 0px, transparent 50%),
-    radial-gradient(at 90% 80%, rgba(0, 240, 255, 0.05) 0px, transparent 50%);
+    radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.04) 0px, transparent 50%),
+    radial-gradient(at 90% 80%, rgba(37, 99, 235, 0.04) 0px, transparent 50%);
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-sans);
@@ -380,7 +380,7 @@ p {
 }
 
 .form-input, .form-textarea, .form-select {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.02);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   color: var(--text-primary);
@@ -392,8 +392,8 @@ p {
 .form-input:focus, .form-textarea:focus, .form-select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.15);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .form-textarea {
@@ -417,26 +417,26 @@ p {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, #00bcff 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #3b82f6 100%);
   border: none;
-  color: var(--bg-darker);
-  box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 240, 255, 0.45);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.03);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 /* Tables / Lists */
@@ -472,11 +472,11 @@ p {
 /* Map UI */
 .map-viewport {
   position: relative;
-  background: #0f121d;
+  background: #f8fafc;
   height: 480px;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .map-svg {
@@ -538,7 +538,7 @@ p {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(15, 18, 30, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -547,6 +547,7 @@ p {
   flex-direction: column;
   gap: 0.5rem;
   z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .layer-toggle {
@@ -563,7 +564,7 @@ p {
 
 .layer-toggle:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .layer-toggle.active {
@@ -571,8 +572,8 @@ p {
   font-weight: 600;
 }
 
-.layer-toggle.active.layer-roads { color: #f1f3f9; }
-.layer-toggle.active.layer-water { color: #00bfff; }
+.layer-toggle.active.layer-roads { color: #475569; }
+.layer-toggle.active.layer-water { color: #0284c7; }
 .layer-toggle.active.layer-health { color: var(--danger); }
 .layer-toggle.active.layer-education { color: var(--warning); }
 .layer-toggle.active.layer-environment { color: var(--success); }
@@ -581,7 +582,7 @@ p {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  background: rgba(15, 18, 30, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -591,6 +592,7 @@ p {
   gap: 0.35rem;
   font-size: 0.75rem;
   z-index: 10;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .legend-item {
@@ -797,9 +799,9 @@ p {
 
 /* Quick info details on twin map clicked */
 .twin-detail-overlay {
-  background: rgba(18, 22, 38, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid var(--border-glow);
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
   border-radius: 12px;
   padding: 1rem;
   margin-top: 1rem;
